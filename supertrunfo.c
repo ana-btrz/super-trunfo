@@ -1,30 +1,37 @@
 #include <stdio.h>
 #include <string.h>
-
+#include <stdlib.h> // Para atoi e atof
 int main() {
     // Declaração das variáveis para a carta 1 - novas propriedades
-    char estado1[3];;
-    char codigo1[4];       // 3 caracteres + '\0'
-    char nomeCidade1[50];
-    unsigned long int populacao1;
-    float area1;
-    float pib1;
-    int pontosTuristicos1;
-    float densidadePopulacional1;
-    float pibPerCapita1;
-    
+    typedef struct {}
+    char estado[3];;
+    char codigo[4];       // 3 caracteres + '\0'
+    char nomeCidade[50];
+    unsigned long int populacao;
+    float area;
+    float pib;
+    int pontosTuristicos;
+    float densidadePopulacional;
+    float pibPerCapita;
+} Carta;
 
-    // Declaração das variáveis para a carta 2
-    char estado2;
-    char codigo2[4];
-    char nomeCidade2[50];
-    unsigned long int populacao2;
-    float area2;
-    float pib2;
-    int pontosTuristicos2;
-    float densidadePopulacional2;
-    float pibPerCapita2;
-    
+// Função para calcular a densidade populacional
+float calcularDensidadePopulacional(unsigned long int populacao, float area) {
+    if (area > 0) {
+        return (float)populacao / area;
+    } else {
+        return 0;
+    }
+}
+
+// Função para calcular o PIB per capita
+float calcularPIBPerCapita(float pib, unsigned long int populacao) {
+    if (populacao > 0) {
+        return pib * 1000000000.0 / populacao; // PIB em reais
+    } else {
+        return 0;
+    }
+}
 
     // Entrada de dados para a carta 1
     printf("Digite os dados da Carta 1:\n");
